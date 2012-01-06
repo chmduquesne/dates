@@ -1,0 +1,84 @@
+I needed a console friendly tool to print dates, so I made one, basing it
+on python-dateutil. Here is the output of --help:
+
+NAME
+    dates - prints a list of dates
+
+SYNOPSIS
+    dates [OPTIONS]
+
+OPTIONS
+    --help:
+        Print this help
+
+    --freq <frequency>:
+        Choose frequency (values admitted: YEARLY, MONTHLY, WEEKLY,
+        DAILY). Defaults to DAILY.
+
+    --from, --dtstart:
+        Recurrence start
+
+    --to, --until:
+        limit of the recurrence
+
+    --step, --interval:
+        The interval between each freq iteration. For example, when using
+        YEARLY, an interval of 2 means once every two years.
+
+    --wkst:
+        The week start day. Must be one of the MO, TU, WE constants, or an
+        integer, specifying the first day of the week.
+
+    --count:
+        How many occurrences will be generated.
+
+    --byweekday:
+        If given, it must be either an integer (0 == MO), a sequence of
+        integers, one of the weekday constants (MO, TU, etc), or a
+        sequence of these constants. When given, these variables will
+        define the weekdays where the recurrence will be applied.
+
+    --bysetpos:
+        If given, it must be either an integer, or a sequence of integers,
+        positive or negative. Each given integer will specify an
+        occurrence number, corresponding to the nth occurrence of the rule
+        inside the frequency period. For example, a bysetpos of -1 if
+        combined with a MONTHLY frequency, and a byweekday of (MO, TU, WE,
+        TH, FR), will result in the last work day of every month. )
+
+    --bymonth:
+        If given, it must be either an integer, or a sequence of integers,
+        meaning the months to apply the recurrence to.
+
+    --bymonthday:
+        If given, it must be either an integer, or a sequence of integers,
+        meaning the month days to apply the recurrence to.
+
+    --byyearday:
+        If given, it must be either an integer, or a sequence of integers,
+        meaning the year days to apply the recurrence to.
+
+    --byweekno:
+        If given, it must be either an integer, or a sequence of integers,
+        meaning the week numbers to apply the recurrence to. Week numbers
+        have the meaning described in ISO8601, that is, the first week of
+        the year is that containing at least four days of the new year.
+
+    --byweekday:
+        If given, it must be either an integer (0 == MO) or a sequence of
+        integers. When given, these variables will define the weekdays
+        where the recurrence will be applied.
+
+    --byeaster
+        If given, it must be either an integer, or a sequence of integers,
+        positive or negative. Each integer will define an offset from the
+        Easter Sunday. Passing the offset 0 to byeaster will yield the
+        Easter Sunday itself.
+
+EXAMPLES:
+    Prints the Mondays and Tuesdays that occur every 5 days in 2010:
+    dates --from 2010-01-01 --to 2011-01-01 --step 5 --byweekday '["MO","TU"]'"
+
+    Prints the last friday of each month of 2010:
+    dates --freq MONTHLY --from 2010-01-01 --to 2011-01-01 --byweekday 'FR(-1)'
+
