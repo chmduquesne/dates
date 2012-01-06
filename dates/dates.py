@@ -84,7 +84,7 @@ OPTIONS
 
 EXAMPLES:
     Prints the Mondays and Tuesdays that occur every 5 days in 2010:
-    dates --from 2010-01-01 --to 2011-01-01 --step 5 --byweekday '["MO","TU"]'"
+    dates --from 2010-01-01 --to 2011-01-01 --step 5 --byweekday '["MO","TU"]'
 
     Prints the last friday of each month of 2010:
     dates --freq MONTHLY --from 2010-01-01 --to 2011-01-01 --byweekday 'FR(-1)'
